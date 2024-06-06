@@ -4,6 +4,7 @@ let myRadio;
 let g;
 let cColor = false;
 let volcano;
+let fireColorButton
 
 function preload() {
   font = loadFont("font/MerriweatherSans-Regular.ttf");
@@ -32,6 +33,22 @@ function setup() {
   myRadio.option("DarkTurquoise", "Winter");
 
   myRadio.selected("SteelBlue");
+
+  //Fire Button Color
+  fireColorButton = createRadio()
+  fireColorButton.position(270, 250)
+  fireColorButton.size(250)
+
+  fireColorButton.option(349, "Red")
+  fireColorButton.option(27, "Orange")
+  fireColorButton.option(58, "Yellow")
+  fireColorButton.option(121, "Green")
+  fireColorButton.option(185, "Blue")
+  fireColorButton.option(260, "Purple")
+  fireColorButton.option(305, "Pink")
+
+
+
 }
 
 // function mousePressed() {
@@ -157,7 +174,7 @@ function createFire() {
       128,
       random(5, 20),
       random(-300, 300),
-      random(23, 51)
+      fireColorButton.value()
     );
     fire.push(f);
   }
