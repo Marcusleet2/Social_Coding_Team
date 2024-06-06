@@ -53,28 +53,44 @@ function setup() {
   redFireButton.mousePressed(redFire);
 
   orangeFireButton = createButton("Orange");
-  orangeFireButton.position(350, 250);
+  orangeFireButton.position(320, 250);
   orangeFireButton.mousePressed(orangeFire);
 
+  yellowFireButton = createButton("Yellow");
+  yellowFireButton.position(390, 250);
+  yellowFireButton.mousePressed(yellowFire);
 
+  greenFireButton = createButton("Green");
+  greenFireButton.position(453, 250);
+  greenFireButton.mousePressed(greenFire);
 
+  blueFireButton = createButton("Blue");
+  blueFireButton.position(270, 280);
+  blueFireButton.mousePressed(blueFire);
 
+  purpleFireButton = createButton("Purple");
+  purpleFireButton.position(322, 280);
+  purpleFireButton.mousePressed(purpleFire);
+
+  pinkFireButton = createButton("Pink");
+  pinkFireButton.position(387, 280);
+  pinkFireButton.mousePressed(pinkFire);
 
   // button shapes
   rectButton = createButton("Rectangle");
-  rectButton.position(270,300);
+  rectButton.position(270, 300);
   rectButton.mousePressed(function () {
     mode = "rectangle";
   });
 
   triangleButton = createButton("triangle");
-  triangleButton.position(350,300)
+  triangleButton.position(350, 300);
   triangleButton.mousePressed(function () {
     mode = "triangle";
   });
 
   circleButton = createButton("circle");
-  circleButton.position(420,300);
+  circleButton.position(420, 300);
   circleButton.mousePressed(function () {
     mode = "circle";
   });
@@ -100,7 +116,6 @@ function draw() {
   // Radio
   let g = myRadio.value();
   background(g);
-
 
   createFire();
 
@@ -132,7 +147,7 @@ function draw() {
   text("Fire Color", 133, 250);
 
   // shape
-  text("shape change", 133,315)
+  text("shape change", 133, 315);
 }
 
 // function GWSign(x, y, size) {
@@ -198,24 +213,19 @@ class Fire {
     rotate((this.angle * PI) / 180);
     // triangle(0, -this.size, this.size * 1.8, 0, 0, this.size);
     pop();
-
-
-    
   }
 
-  shapeChange(){
-    if(mode==='triangle'){
+  shapeChange() {
+    if (mode === "triangle") {
       triangle(0, -this.size, this.size * 1.8, 0, 0, this.size);
-    }else if(mode==='rectangle'){
-      rect(0,0,this.size,this.size);
-    }else if(mode==='circle'){
-      ellipse(0,0,this.size,this.size);
-    }else{
+    } else if (mode === "rectangle") {
+      rect(0, 0, this.size, this.size);
+    } else if (mode === "circle") {
+      ellipse(0, 0, this.size, this.size);
+    } else {
       triangle(0, -this.size, this.size * 1.8, 0, 0, this.size);
     }
   }
-
-  
 }
 
 function createFire() {
