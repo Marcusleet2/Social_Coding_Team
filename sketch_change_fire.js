@@ -13,6 +13,14 @@ let redFireButtom,
   pinkFireButton;
 let hue = 0;
 
+let rectButton;
+let circleButton;
+let triangleButton;
+
+let mode;
+
+
+
 function preload() {
   font = loadFont("font/MerriweatherSans-Regular.ttf");
   volcano = loadImage("assets/volcano.png");
@@ -49,6 +57,26 @@ function setup() {
   redFireButtom = createButton("Orange");
   redFireButtom.position(350, 250);
   redFireButtom.mousePressed(orangeFire);
+
+  
+
+// button shapes
+  rectButton=createButton('Rectangle');
+  rectButton.mousePressed(function(){
+    mode='rectangle';
+  })
+
+  triangleButton=createButton('triangle');
+  triangleButton.mousePressed(function(){
+    mode='triangle';
+  })
+
+  circleButton= createButton('circle');
+  circleButton.mousePressed(function(){
+    mode='circle';
+  })
+
+
 }
 
 // function mousePressed() {
