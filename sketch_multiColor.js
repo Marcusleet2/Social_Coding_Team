@@ -24,7 +24,7 @@ function setup() {
   //Radio
   myRadio = createRadio();
   myRadio.position(270, 200);
-  myRadio.size(250);
+  myRadio.size(260);
 
   myRadio.option('GoldenRod','Spring');
   myRadio.option('YellowGreen','Summer');

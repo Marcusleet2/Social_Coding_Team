@@ -53,8 +53,28 @@ function setup() {
   redFireButton.mousePressed(redFire);
 
   orangeFireButton = createButton("Orange");
-  orangeFireButton.position(350, 250);
+  orangeFireButton.position(320, 250);
   orangeFireButton.mousePressed(orangeFire);
+
+  yellowFireButton = createButton("Yellow");
+  yellowFireButton.position(390, 250);
+  yellowFireButton.mousePressed(yellowFire);
+
+  greenFireButton = createButton("Green");
+  greenFireButton.position(453, 250);
+  greenFireButton.mousePressed(greenFire);
+
+  blueFireButton = createButton("Blue");
+  blueFireButton.position(270, 280);
+  blueFireButton.mousePressed(blueFire);
+
+  purpleFireButton = createButton("Purple");
+  purpleFireButton.position(322, 280);
+  purpleFireButton.mousePressed(purpleFire);
+
+  pinkFireButton = createButton("Pink");
+  pinkFireButton.position(387, 280);
+  pinkFireButton.mousePressed(pinkFire);
 
   // button shapes
   rectButton = createButton("Rectangle");
