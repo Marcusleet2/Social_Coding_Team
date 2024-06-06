@@ -4,7 +4,14 @@ let myRadio;
 let g;
 let cColor = false;
 let volcano;
-let fireColorButton
+let redFireButtom,
+  orangeFireButton,
+  yellowFireButton,
+  greenFireButton,
+  blueFireButton,
+  purpleFireButton,
+  pinkFireButton;
+let hue = 0;
 
 function preload() {
   font = loadFont("font/MerriweatherSans-Regular.ttf");
@@ -35,20 +42,13 @@ function setup() {
   myRadio.selected("SteelBlue");
 
   //Fire Button Color
-  fireColorButton = createRadio()
-  fireColorButton.position(270, 250)
-  fireColorButton.size(250)
+  redFireButtom = createButton("Red");
+  redFireButtom.position(270, 250);
+  redFireButtom.mousePressed(redFire);
 
-  fireColorButton.option(349, "Red")
-  fireColorButton.option(27, "Orange")
-  fireColorButton.option(58, "Yellow")
-  fireColorButton.option(121, "Green")
-  fireColorButton.option(185, "Blue")
-  fireColorButton.option(260, "Purple")
-  fireColorButton.option(305, "Pink")
-
-
-
+  redFireButtom = createButton("Orange");
+  redFireButtom.position(350, 250);
+  redFireButtom.mousePressed(orangeFire);
 }
 
 // function mousePressed() {
@@ -91,15 +91,13 @@ function draw() {
 
   image(volcano, -10, 10, 800, 700);
 
-  coIn()
+  coIn();
 
   //background color text
-  text("Background Color", 133, 213)
+  text("Background Color", 133, 213);
 
   //fire color
-  text("Fire Color", 133, 250)
-
-
+  text("Fire Color", 133, 250);
 }
 
 // function GWSign(x, y, size) {
@@ -174,12 +172,40 @@ function createFire() {
       128,
       random(5, 20),
       random(-300, 300),
-      fireColorButton.value()
+      random(hue + 10, hue + 20)
     );
     fire.push(f);
   }
 }
 
 function coIn() {
-    text(mouseX + "," + mouseY, 20, 20)
+  text(mouseX + "," + mouseY, 20, 20);
+}
+
+function redFire() {
+  hue = 0;
+}
+
+function orangeFire() {
+  hue = 27;
+}
+
+function yellowFire() {
+  hue = 58;
+}
+
+function greenFire() {
+  hue = 121;
+}
+
+function blueFire() {
+  hue = 185;
+}
+
+function purpleFire() {
+  hue = 260;
+}
+
+function pinkFire() {
+  hue = 305;
 }
