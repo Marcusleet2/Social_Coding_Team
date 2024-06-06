@@ -11,7 +11,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 400);
+  createCanvas(800, 500);
   colorMode(HSB);
 //   rectMode(CENTER);
   textFont(font);
@@ -74,7 +74,7 @@ function draw() {
     }
   }
 
-  image(volcano, -10, 25, 800, 600);
+  image(volcano, -10, 10, 800, 700);
 }
 
 function GWSign(x, y, size) {
