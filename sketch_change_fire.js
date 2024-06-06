@@ -19,8 +19,6 @@ let triangleButton;
 
 let mode;
 
-
-
 function preload() {
   font = loadFont("font/MerriweatherSans-Regular.ttf");
   volcano = loadImage("assets/volcano.png");
@@ -50,33 +48,29 @@ function setup() {
   myRadio.selected("SteelBlue");
 
   //Fire Button Color
-  redFireButtom = createButton("Red");
-  redFireButtom.position(270, 250);
-  redFireButtom.mousePressed(redFire);
+  redFireButton = createButton("Red");
+  redFireButton.position(270, 250);
+  redFireButton.mousePressed(redFire);
 
-  redFireButtom = createButton("Orange");
-  redFireButtom.position(350, 250);
-  redFireButtom.mousePressed(orangeFire);
+  orangeFireButton = createButton("Orange");
+  orangeFireButton.position(350, 250);
+  orangeFireButton.mousePressed(orangeFire);
 
-  
+  // button shapes
+  rectButton = createButton("Rectangle");
+  rectButton.mousePressed(function () {
+    mode = "rectangle";
+  });
 
-// button shapes
-  rectButton=createButton('Rectangle');
-  rectButton.mousePressed(function(){
-    mode='rectangle';
-  })
+  triangleButton = createButton("triangle");
+  triangleButton.mousePressed(function () {
+    mode = "triangle";
+  });
 
-  triangleButton=createButton('triangle');
-  triangleButton.mousePressed(function(){
-    mode='triangle';
-  })
-
-  circleButton= createButton('circle');
-  circleButton.mousePressed(function(){
-    mode='circle';
-  })
-
-
+  circleButton = createButton("circle");
+  circleButton.mousePressed(function () {
+    mode = "circle";
+  });
 }
 
 // function mousePressed() {
