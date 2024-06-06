@@ -4,7 +4,7 @@ let myRadio;
 let g;
 let cColor = false;
 let volcano;
-let redFireButtom,
+let redFireButton,
   orangeFireButton,
   yellowFireButton,
   greenFireButton,
