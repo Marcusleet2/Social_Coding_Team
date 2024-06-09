@@ -16,7 +16,7 @@ let hue = 0;
 let rectButton;
 let circleButton;
 let triangleButton;
-
+let numberSlider;
 let mode;
 
 function preload() {
@@ -28,7 +28,7 @@ function setup() {
   createCanvas(800, 500);
   colorMode(HSB);
   //   rectMode(CENTER);
-  textFont(font);
+  textFont(font,15);
   //   imageMode(CENTER);
   angleMode(DEGREES);
 
@@ -49,51 +49,74 @@ function setup() {
 
   //Fire Button Color
   redFireButton = createButton("Red");
-  redFireButton.position(270, 250);
+  redFireButton.position(270, 230);
   redFireButton.mousePressed(redFire);
+  redFireButton.class('button redFireButton');
+
 
   orangeFireButton = createButton("Orange");
-  orangeFireButton.position(320, 250);
+  orangeFireButton.position(330, 230);
   orangeFireButton.mousePressed(orangeFire);
+  orangeFireButton.class('button orangeFireButton')
 
   yellowFireButton = createButton("Yellow");
-  yellowFireButton.position(390, 250);
+  yellowFireButton.position(410, 230);
   yellowFireButton.mousePressed(yellowFire);
+  yellowFireButton.class('button yellowFireButton');
 
   greenFireButton = createButton("Green");
-  greenFireButton.position(453, 250);
+  greenFireButton.position(480, 230);
   greenFireButton.mousePressed(greenFire);
+  greenFireButton.class('button greenFireButton');
 
   blueFireButton = createButton("Blue");
   blueFireButton.position(270, 280);
   blueFireButton.mousePressed(blueFire);
+  blueFireButton.class('button blueFireButton');
 
   purpleFireButton = createButton("Purple");
   purpleFireButton.position(322, 280);
   purpleFireButton.mousePressed(purpleFire);
+  purpleFireButton.class('button purpleFireButton');
 
   pinkFireButton = createButton("Pink");
   pinkFireButton.position(387, 280);
   pinkFireButton.mousePressed(pinkFire);
+  pinkFireButton.class('button pinkFireButton');
+
+
+numberSlider= createSlider(0,1,0.5,0);
+numberSlider.size(300);
+numberSlider.position(280,405)
+
 
   // button shapes
   rectButton = createButton("Rectangle");
-  rectButton.position(270, 300);
+  rectButton.position(270,340);
   rectButton.mousePressed(function () {
     mode = "rectangle";
+    buttonUpdate();
+
   });
+  rectButton.class('button shapeButton');
 
   triangleButton = createButton("triangle");
-  triangleButton.position(350, 300);
+  triangleButton.position(360,340);
+  
   triangleButton.mousePressed(function () {
     mode = "triangle";
+    buttonUpdate();
   });
+  triangleButton.class('shapeButton button')
 
   circleButton = createButton("circle");
-  circleButton.position(420, 300);
+  circleButton.position(430,340);
   circleButton.mousePressed(function () {
     mode = "circle";
+    buttonUpdate();
   });
+  circleButton.class('shapeButton button');
+
 }
 
 // function mousePressed() {
@@ -116,8 +139,21 @@ function draw() {
   // Radio
   let g = myRadio.value();
   background(g);
+// frameRate(1);
 
-  createFire();
+// frameRate(60)
+// if(frameCount%1===0){
+//   createFire(hue,numberSlider.value());
+// }
+ 
+
+
+
+  let fireNumber=numberSlider.value();
+  createFire(hue,fireNumber);
+
+  console.log(fireNumber*60)
+  
 
   // Creating Fire
   for (let i = fire.length - 1; i >= 0; i--) {
@@ -141,13 +177,23 @@ function draw() {
   coIn();
 
   //background color text
+
+
+
+
+  fill('white')
   text("Background Color", 133, 213);
 
   //fire color
-  text("Fire Color", 133, 250);
+  text("Fire Color", 133, 260);
 
   // shape
-  text("shape change", 133, 315);
+  text("Shape Change", 133,370);
+
+  text("Fireball Numbers", 133,420);
+
+  fill('black');
+
 }
 
 // function GWSign(x, y, size) {
@@ -213,29 +259,40 @@ class Fire {
     rotate((this.angle * PI) / 180);
     // triangle(0, -this.size, this.size * 1.8, 0, 0, this.size);
     pop();
+
+
+    
   }
 
-  shapeChange() {
-    if (mode === "triangle") {
+  shapeChange(){
+    if(mode==='triangle'){
       triangle(0, -this.size, this.size * 1.8, 0, 0, this.size);
-    } else if (mode === "rectangle") {
-      rect(0, 0, this.size, this.size);
-    } else if (mode === "circle") {
-      ellipse(0, 0, this.size, this.size);
-    } else {
+    }else if(mode==='rectangle'){
+      rect(0,0,this.size,this.size);
+    }else if(mode==='circle'){
+      ellipse(0,0,this.size,this.size);
+    }else{
       triangle(0, -this.size, this.size * 1.8, 0, 0, this.size);
     }
   }
+
+  
 }
 
-function createFire() {
-  for (let i = 0; i < 4; i++) {
+// loop fireNumber length  the number of fireballs. 
+// Generate 1*fireNumber*60times/second:
+
+function createFire(color,fireNumber) {
+
+  for (let i = 0; i < 3*fireNumber; i++) {
     let f = new Fire(
       random(225, 560),
       128,
       random(5, 20),
       random(-300, 300),
-      random(hue + 10, hue + 20)
+      random(color + 10, color + 20)
+
+
     );
     fire.push(f);
   }
@@ -245,30 +302,88 @@ function coIn() {
   text(mouseX + "," + mouseY, 20, 20);
 }
 
+
+
 function redFire() {
   hue = 0;
+  buttonUpdate();
 }
 
 function orangeFire() {
   hue = 27;
+  buttonUpdate()
 }
 
 function yellowFire() {
   hue = 58;
+  buttonUpdate()
 }
 
 function greenFire() {
   hue = 121;
+  buttonUpdate()
 }
 
 function blueFire() {
   hue = 185;
+  buttonUpdate()
 }
 
 function purpleFire() {
   hue = 260;
+  buttonUpdate()
 }
 
 function pinkFire() {
   hue = 305;
+  buttonUpdate()
+}
+
+
+
+function buttonUpdate(){
+  // shape buttons if not clicked
+  rectButton.removeClass('active');
+  triangleButton.removeClass('active');
+  circleButton.removeClass('active');
+
+
+// shape buttons if clicked
+  if(mode==='rectangle'){
+    rectButton.addClass('active')
+  }else if(mode==='triangle'){
+    triangleButton.addClass('active')
+  }else if(mode==='circle'){
+    circleButton.addClass('active');
+  }
+
+
+// color buttons if not clicked
+  redFireButton.removeClass('active');
+  orangeFireButton.removeClass('active');
+  yellowFireButton.removeClass('active');
+  greenFireButton.removeClass('active');
+  blueFireButton.removeClass('active')
+  purpleFireButton.removeClass('active');
+  pinkFireButton.removeClass('active')
+
+
+  // color buttons if clicked
+  if(hue==0){
+    redFireButton.addClass('active');
+  }else if(hue==27){
+    orangeFireButton.addClass('active');
+  }else if(hue==58){
+    yellowFireButton.addClass('active')
+  }else if(hue==121){
+    greenFireButton.addClass('active');
+  }else if(hue==185){
+    blueFireButton.addClass('active');
+  }else if(hue==260){
+    purpleFireButton.addClass('active');
+  }else if(hue==305){
+    pinkFireButton.addClass('active')
+  }
+
+
 }

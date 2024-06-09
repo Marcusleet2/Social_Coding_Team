@@ -6,3 +6,81 @@ html, body {
 canvas {
   display: block;
 }
+
+.button{
+  padding: 10px;
+  border-radius: 10px;
+  color: black;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+
+.redFireButton{
+  background-color: red;
+  /* padding: 10px; */
+}
+
+
+.orangeFireButton{
+  background-color: orange;
+  /* padding: 10px; */
+}
+
+
+
+.yellowFireButton{
+  background-color: yellow;
+}
+
+.greenFireButton{
+  background-color: green;
+}
+
+.blueFireButton{
+  background-color: blue;
+}
+
+.purpleFireButton{
+  background-color: purple;
+}
+
+.pinkFireButton{
+  background-color: pink;
+}
+
+.redFireButton:hover,.orangeFireButton:hover, .yellowFireButton:hover, .greenFireButton:hover, .blueFireButton:hover .purpleFireButton:hover .pinkFireButton:hover{
+  opacity: 0.8;
+  border-radius: 0px;
+  padding:12px;
+  
+}
+
+
+
+
+.shapeButton{
+  background-color: rgb(0,66,86);
+  color: white;
+}
+
+.shapeButton:hover{
+  color: yellow;
+  opacity: 0.8;
+  border-radius: 0px;
+}
+
+
+
+.active{
+  background-color: rgb(233,255,137);
+  border: solid 3px orange;
+  font-weight: 600;
+  color: blueviolet;
+}
+
+.active:hover{
+  color:blueviolet;
+}
